@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. PASSCODE LOCK SCREEN -->
+  <div id="screen-passcode" class="screen active">
+    <div class="lock-container">
+      <div class="photo-area">
+        <div class="polaroid">
+          <span class="polaroid-bow">🎀</span>
+          <img src="https://iili.io/CLARocx.jpg" alt="Birthday Photo">
+          <div class="polaroid-caption">Happy Birthday!<br>Ankit </div>
+        </div>
+      </div>
+      <div class="keypad-area">
+        <div class="keypad-header-icon">🔓</div>
+        <div class="keypad-header-text">ENTER A PASSCODE</div>
+        <div class="passcode-dots">
+          <div class="passcode-dot"></div>
+          <div class="passcode-dot"></div>
+          <div class="passcode-dot"></div>
+          <div class="passcode-dot"></div>
+          <div class="passcode-dot"></div>
+          <div class="passcode-dot"></div>
+        </div>
+        <div class="numpad">
+          <div class="num-btn" onclick="pressKey('1')">1</div>
+          <div class="num-btn" onclick="pressKey('2')">2</div>
+          <div class="num-btn" onclick="pressKey('3')">3</div>
+          <div class="num-btn" onclick="pressKey('4')">4</div>
+          <div class="num-btn" onclick="pressKey('5')">5</div>
+          <div class="num-btn" onclick="pressKey('6')">6</div>
+          <div class="num-btn" onclick="pressKey('7')">7</div>
+          <div class="num-btn" onclick="pressKey('8')">8</div>
+          <div class="num-btn" onclick="pressKey('9')">9</div>
+          <div class="num-btn" onclick="pressKey('*')">*</div>
+          <div class="num-btn" onclick="pressKey('0')">0</div>
+          <div class="num-btn" onclick="pressKey('⌫')">⌫</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DATE SPLASH SCREEN -->
+  <div id="screen-date" class="screen">
+    <div class="date-display">19/08/2006</div>
+  </div>
+
+  <!-- 3. LOADING SCREEN -->
+  <div id="screen-loading" class="screen">
+    <div class="kaomoji top-left">( ͡° 3 ͡°)</div>
+    <div class="loading-title">Hey ! 🎂</div>
+    <div>Loading your birthday surprise...</div>
+    <div class="loading-bar-container">
+      <div class="loading-bar-fill" id="loading-bar"></div>
+    </div>
+    <div class="kaomoji bottom-right">(◕‿◕)</div>
+  </div>
+
+  <!-- 4. ENVELOPE SCREEN -->
+  <div id="screen-envelope" class="screen">
+    <div class="envelope-card">
+      <div class="envelope-title">Happy Birthday!<br>Ankit</div>
+      <div class="envelope-icon" onclick="openEnvelope()">
+        <div class="envelope-seal"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. HERO SCREEN -->
+  <div id="screen-hero" class="screen">
+    <div class="hero-content">
+      <div class="hero-date">19 · 08 · 2026</div>
+      <div class="hero-title">Happy Birthday Ankit (# MD KYP🍚❤️)</div>
+      <div class="hero-subtitle">I hope this little gift will make you happy ❤️</div>
+      <div class="hero-quote">"This gift is like our love thoughtful, unique, and meant just for you" 💖</div>
+      <button class="btn-letter" onclick="showLetter()">📖 READ YOUR LETTER</button>
+    </div>
+  </div>
+
+  <!-- 6. LETTER SCREEN -->
+  <div id="screen-letter" class="screen">
+    <div class="letter-container">
+      <div class="letter-text">
+        <h2>HAPPY<br>Birthday</h2>
+        <p>You are the one I choose everyday. To the moon, the stars, I walk. I couldn't have spent this day with anyone else than you! 💕</p>
+        <p><b>Happiest Birthday Ankit. I wish you the best!</b></p>
+        <p>No matter how much time passes, my care and appreciation for you will never fade. I promise to always stand beside you, and celebrate every little and big achievement of your life. Thank you for bringing so much joy, love, and laughter into my world. The best thing that has happened to me is YOU. ❤️</p>
+        <p>Wishing a birthday filled with love, boundless happiness, and moments that make you feel as special as you truly are.</p>
+        <p>Once again, Happy Birthday to you! 🎂</p>
+        <p>May your day be as wonderful, beautiful, and irreplaceable as you are to me</p>
+        <p style="text-align: right; margin-top: 1.5rem;"><b>Always yours,</b><br>❤️</p>
+      </div>
+      <div class="letter-gallery">
+        <img src="https://iili.io/CLARTAB.jpg" alt="Memory 1">
+        <img src="https://iili.io/CLARTAB.jpg" alt="Memory 2">
+        <img src="https://iili.io/CLARuwP.jpg" alt="Memory 3">
+      </div>
+      <div class="bottom-banner" onclick="showWishScreen()">✨ CLICK HERE FOR A SURPRISE ✨</div>
+    </div>
+  </div>
+
+  <!-- 7. CAKE & WISH SCREEN -->
+  <div id="screen-wish" class="screen">
+    <canvas id="fireworks-canvas"></canvas>
+    <div class="wish-title" id="wish-title">Make a Wish ✨</div>
+    <div class="cake-container" onclick="blowCandles()">
+      <svg class="cake-svg" viewBox="0 0 100 100">
+        <!-- Candles -->
+        <rect x="38" y="25" width="4" height="20" fill="#fff" />
+        <rect x="48" y="20" width="4" height="25" fill="#fff" />
+        <rect x="58" y="25" width="4" height="20" fill="#fff" />
+        <!-- Flames -->
+        <circle class="flame" cx="40" cy="21" r="3" fill="#ffb703" />
+        <circle class="flame" cx="50" cy="16" r="3" fill="#ffb703" />
+        <circle class="flame" cx="60" cy="21" r="3" fill="#ffb703" />
+        <!-- Cake Base -->
+        <path d="M 20 45 L 80 45 L 80 80 Q 50 90 20 80 Z" fill="#fff" />
+        <path d="M 20 45 Q 35 55 50 45 Q 65 55 80 45 L 80 55 Q 65 65 50 55 Q 35 65 20 55 Z" fill="#ffb7b2" />
+      </svg>
+    </div>
+    <div class="music-badge" id="music-badge" style="display: none;">
+      🎵 Happy Birthday to You
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
